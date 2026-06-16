@@ -5,6 +5,14 @@ deployment:
     - /bin/cp -R css $DEPLOYPATH
     - /bin/cp -R js $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
+    - /bin/cp -R cours-equitation-bergerac $DEPLOYPATH
+    - /bin/cp -R poney-club-bergerac $DEPLOYPATH
+    - /bin/cp -R stages-equitation-bergerac $DEPLOYPATH
+    - /bin/cp -R balades-cheval-bergerac $DEPLOYPATH
+    - /bin/cp -R pension-chevaux-bergerac $DEPLOYPATH
+    - /bin/cp -R contact $DEPLOYPATH
+    - /bin/cp -R mentions-legales $DEPLOYPATH
+    - /bin/cp -R confidentialite $DEPLOYPATH
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp 404.html $DEPLOYPATH
     - /bin/cp .htaccess $DEPLOYPATH

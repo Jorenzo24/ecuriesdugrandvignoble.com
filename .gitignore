@@ -7,3 +7,6 @@ Thumbs.db
 node_modules/
 *.bak
 *.old
+
+# Originaux non optimisés : backup local uniquement, ni versionnés ni déployés
+assets/images_originales/
