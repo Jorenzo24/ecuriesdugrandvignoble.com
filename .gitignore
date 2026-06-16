@@ -10,3 +10,7 @@ node_modules/
 
 # Originaux non optimisés : backup local uniquement, ni versionnés ni déployés
 assets/images_originales/
+
+# Doublons de synchronisation iCloud (ex: "fichier 2.jpg", "fichier 3.png")
+* 2.*
+* 3.*
