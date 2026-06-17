@@ -154,7 +154,11 @@ try {
 
     foreach ($recipients as $rcpt) {
         $send("RCPT TO:<$rcpt>");
-        if (!$expect(250) && !$expect(251)) throw new RuntimeException('rcpt');
+        [$rcptCode, $rcptResp] = $readResponse();
+        if ($rcptCode !== 250 && $rcptCode !== 251) {
+            error_log("SMTP RCPT refusé pour $rcpt: " . trim($rcptResp));
+            throw new RuntimeException('rcpt');
+        }
     }
 
     $send("DATA");
