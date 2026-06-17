@@ -564,7 +564,7 @@ h1, h2, h3, h4, h5, h6 {
 .intro {
     padding: var(--pad-section) var(--pad-x);
     text-align: center;
-    background: var(--c-white);
+    background: var(--c-cream);
 }
 
 .intro__quote {
@@ -583,6 +583,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =======================================================
+   Séparateur entre sections
+   Un filet discret entre chaque section enfant direct du body,
+   pour qu'on ne « fonde » jamais entre deux sections, même de
+   même couleur. Invisible sur les sections sombres (filet foncé).
+   ======================================================= */
+body > section + section {
+    border-top: 1px solid var(--c-line);
+}
+
+/* =======================================================
    Feature (split image / text)
    ======================================================= */
 .feature {
@@ -590,6 +600,11 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
     min-height: 380px;
     background: var(--c-white);
+}
+
+/* Alterne le fond des sections image/texte consécutives */
+.feature--reverse {
+    background: var(--c-cream);
 }
 
 /* Mobile : image en premier, texte en second */
