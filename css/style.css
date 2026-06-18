@@ -607,6 +607,11 @@ body > section + section {
     background: var(--c-cream);
 }
 
+/* Forcer un fond blanc sur une section précise (alternance page par page) */
+section.section--white {
+    background: var(--c-white);
+}
+
 /* Mobile : image en premier, texte en second */
 .feature__media { order: 1; }
 .feature__body { order: 2; }
