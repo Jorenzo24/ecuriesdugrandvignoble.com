@@ -7,6 +7,16 @@
 # d'exécuter un CGI/PHP et provoquerait un 403 sur les URLs de dossier).
 DirectoryIndex index.html
 
+# ----- Servir les pages HTML en statique -----
+# L'ancien hébergement associait un handler CGI aux .html : Apache tentait
+# d'EXÉCUTER index.html comme un script (cgi-bin: script not found) → 403.
+# On annule ce handler et on force le traitement statique standard.
+<FilesMatch "\.(html|htm)$">
+    SetHandler default-handler
+</FilesMatch>
+RemoveHandler .html .htm
+AddType text/html .html .htm
+
 # ----- Forcer HTTPS -----
 RewriteEngine On
 RewriteCond %{HTTPS} off
