@@ -2,6 +2,11 @@
 # Configuration .htaccess - ecuriesdugrandvignoble.com
 # =======================================================
 
+# ----- Page d'index par défaut -----
+# Force index.html comme index (surcharge un défaut serveur qui tenterait
+# d'exécuter un CGI/PHP et provoquerait un 403 sur les URLs de dossier).
+DirectoryIndex index.html
+
 # ----- Forcer HTTPS -----
 RewriteEngine On
 RewriteCond %{HTTPS} off
