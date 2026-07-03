@@ -47,6 +47,13 @@ if (!empty($_POST['website'] ?? '')) {
     redirect(REDIRECT_OK);
 }
 
+// ---- Time-trap : soumission trop rapide (<3s) ou formulaire trop vieux (>1h) = bot ----
+$ts = (int) ($_POST['ts'] ?? 0);              // timestamp JS en millisecondes
+$elapsed = time() - intdiv($ts, 1000);
+if ($ts === 0 || $elapsed < 3 || $elapsed > 3600) {
+    redirect(REDIRECT_OK);                     // on fait croire au bot que c'est passé
+}
+
 // ---- Validation ----
 $name    = trim((string)($_POST['name']    ?? ''));
 $email   = trim((string)($_POST['email']   ?? ''));
@@ -64,6 +71,35 @@ $name  = sanitizeHeader($name);
 
 // ---- Charger .env ----
 loadEnv(__DIR__ . '/../.env');
+
+// ---- Turnstile : vérification serveur du token Cloudflare ----
+// (secret lu depuis .env ; sans ça, un bot qui POST en direct sur send.php passe)
+$turnstileSecret = (string) getenv('TURNSTILE_SECRET');
+$token           = (string) ($_POST['cf-turnstile-response'] ?? '');
+if ($turnstileSecret === '' || $token === '') {
+    error_log('Turnstile: secret ou token manquant');
+    redirect(REDIRECT_ERR);
+}
+$verifyIp   = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
+$verifyResp = @file_get_contents(
+    'https://challenges.cloudflare.com/turnstile/v0/siteverify',
+    false,
+    stream_context_create(['http' => [
+        'method'  => 'POST',
+        'header'  => 'Content-Type: application/x-www-form-urlencoded',
+        'content' => http_build_query([
+            'secret'   => $turnstileSecret,
+            'response' => $token,
+            'remoteip' => $verifyIp,
+        ]),
+        'timeout' => 5,
+    ]])
+);
+$verifyResult = json_decode((string) $verifyResp, true);
+if (empty($verifyResult['success'])) {
+    error_log('Turnstile: echec verification');
+    redirect(REDIRECT_ERR);
+}
 
 $host = (string) getenv('SMTP_HOST');
 $port = (int)  (getenv('SMTP_PORT') ?: 587);
