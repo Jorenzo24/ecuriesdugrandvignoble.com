@@ -36,6 +36,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/style.css?v=20260618a">
 
+    <!-- Cloudflare Turnstile (anti-spam) -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
     <!-- Schema.org -->
     <script type="application/ld+json">
     {
@@ -175,6 +178,7 @@
 
     <form action="send.php" method="POST" class="contact-form" novalidate>
         <input type="text" name="website" class="contact-form__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="ts" id="ts">
 
         <div class="contact-form__row">
             <div class="contact-form__field">
@@ -196,6 +200,8 @@
             <label for="cf-message">Message</label>
             <textarea id="cf-message" name="message" rows="6" maxlength="5000" required></textarea>
         </div>
+
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAADt1YxoUX4xVd51j"></div>
 
         <div class="contact-form__submit-wrap">
             <button type="submit" class="btn btn--dark">Envoyer le message</button>
@@ -241,5 +247,6 @@
 </footer>
 
 <script src="../js/main.js?v=20260515m"></script>
+<script>document.getElementById('ts').value = Date.now();</script>
 </body>
 </html>
