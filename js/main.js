@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alertEl.setAttribute('role', 'alert');
             alertEl.textContent = status === 'success'
                 ? 'Merci, votre message a bien été envoyé. Nous reviendrons vers vous rapidement.'
-                : 'Une erreur est survenue. Vous pouvez nous appeler au 06 73 43 86 09.';
+                : 'Une erreur est survenue. Vous pouvez nous appeler au 06 81 07 84 53.';
             form.insertAdjacentElement('beforebegin', alertEl);
             alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
             history.replaceState({}, '', window.location.pathname);
