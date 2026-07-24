@@ -1,45 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- ===== Accueil / Home ===== -->
     <url>
         <loc>https://ecuriesdugrandvignoble.com/</loc>
-        <lastmod>2026-04-27</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- ===== École / Riding school ===== -->
+    <url>
         <loc>https://ecuriesdugrandvignoble.com/cours-equitation-bergerac/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/cours-equitation-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/riding-school/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/cours-equitation-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
+    <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/riding-school/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/cours-equitation-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/riding-school/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/cours-equitation-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ===== Poney club / Pony club ===== -->
     <url>
         <loc>https://ecuriesdugrandvignoble.com/poney-club-bergerac/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/poney-club-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/pony-club/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/poney-club-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/pony-club/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/poney-club-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/pony-club/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/poney-club-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- ===== Stages / Courses ===== -->
+    <url>
         <loc>https://ecuriesdugrandvignoble.com/stages-equitation-bergerac/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/stages-equitation-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/riding-courses/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/stages-equitation-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/riding-courses/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/stages-equitation-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/riding-courses/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/stages-equitation-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== Balades / Trail rides ===== -->
     <url>
         <loc>https://ecuriesdugrandvignoble.com/balades-cheval-bergerac/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/balades-cheval-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/horseback-riding-tours/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/balades-cheval-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
+    <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/horseback-riding-tours/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/balades-cheval-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/horseback-riding-tours/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/balades-cheval-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== Pension / Livery ===== -->
     <url>
         <loc>https://ecuriesdugrandvignoble.com/pension-chevaux-bergerac/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/pension-chevaux-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/horse-boarding/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/pension-chevaux-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/horse-boarding/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/pension-chevaux-bergerac/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/horse-boarding/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/pension-chevaux-bergerac/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- ===== Contact ===== -->
+    <url>
         <loc>https://ecuriesdugrandvignoble.com/contact/</loc>
-        <lastmod>2026-05-15</lastmod>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/contact/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/contact/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/contact/"/>
+        <lastmod>2026-07-24</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
+    <url>
+        <loc>https://ecuriesdugrandvignoble.com/en/contact/</loc>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://ecuriesdugrandvignoble.com/contact/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://ecuriesdugrandvignoble.com/en/contact/"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://ecuriesdugrandvignoble.com/contact/"/>
+        <lastmod>2026-07-24</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
 </urlset>

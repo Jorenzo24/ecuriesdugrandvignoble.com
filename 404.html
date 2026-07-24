@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex">
-    <title>404 - Page introuvable | Écuries du Grand Vignoble</title>
+    <title>404 - Page introuvable / Page not found | Écuries du Grand Vignoble</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { font-size: 16px; }
@@ -39,6 +39,12 @@
             margin-bottom: 2rem;
             color: #666;
         }
+        .actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         a {
             display: inline-block;
             padding: 0.75rem 1.5rem;
@@ -48,17 +54,31 @@
             border-radius: 4px;
             transition: background 0.2s;
         }
+        a.secondary {
+            background: transparent;
+            color: #222;
+            border: 1px solid #ccc;
+        }
         a:hover {
             background: #444;
+            color: #fff;
+        }
+        a.secondary:hover {
+            background: #f0f0f0;
+            color: #222;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>404</h1>
-        <h2>Cette page n'existe pas</h2>
-        <p>La page que vous cherchez a peut-être été déplacée ou supprimée.</p>
-        <a href="/">Retour à l'accueil</a>
+        <h2>Cette page n'existe pas · Page not found</h2>
+        <p>La page que vous cherchez a peut-être été déplacée ou supprimée.<br>
+        The page you are looking for may have been moved or removed.</p>
+        <div class="actions">
+            <a href="/">Retour à l'accueil</a>
+            <a href="/en/" class="secondary">Back to home</a>
+        </div>
     </div>
 </body>
 </html>
