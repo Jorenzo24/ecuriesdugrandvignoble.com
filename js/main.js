@@ -1,4 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // ---- Langue courante (fr par défaut, en pour les pages /en/) ----
+    const isEN = (document.documentElement.lang || 'fr').toLowerCase().startsWith('en');
+    const t = {
+        menuOpen:  isEN ? 'Open menu'  : 'Ouvrir le menu',
+        menuClose: isEN ? 'Close menu' : 'Fermer le menu',
+        formOk:    isEN
+            ? 'Thank you, your message has been sent. We will get back to you shortly.'
+            : 'Merci, votre message a bien été envoyé. Nous reviendrons vers vous rapidement.',
+        formErr:   isEN
+            ? 'Something went wrong. You can reach us on +33 6 81 07 84 53.'
+            : 'Une erreur est survenue. Vous pouvez nous appeler au 06 81 07 84 53.',
+    };
+
     // ---- Année dynamique du copyright ----
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -19,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggle.addEventListener('click', () => {
                 const isOpen = header.classList.toggle('is-open');
                 toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                toggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+                toggle.setAttribute('aria-label', isOpen ? t.menuClose : t.menuOpen);
                 document.body.style.overflow = isOpen ? 'hidden' : '';
             });
 
@@ -42,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const alertEl = document.createElement('div');
             alertEl.className = 'contact-form__alert contact-form__alert--' + status;
             alertEl.setAttribute('role', 'alert');
-            alertEl.textContent = status === 'success'
-                ? 'Merci, votre message a bien été envoyé. Nous reviendrons vers vous rapidement.'
-                : 'Une erreur est survenue. Vous pouvez nous appeler au 06 81 07 84 53.';
+            alertEl.textContent = status === 'success' ? t.formOk : t.formErr;
             form.insertAdjacentElement('beforebegin', alertEl);
             alertEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
             history.replaceState({}, '', window.location.pathname);

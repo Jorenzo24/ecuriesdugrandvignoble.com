@@ -7,9 +7,6 @@ declare(strict_types=1);
 // SMTP STARTTLS natif (port 587), pas de dépendance externe
 // =======================================================
 
-const REDIRECT_OK    = '/contact/?status=success';
-const REDIRECT_ERR   = '/contact/?status=error';
-
 function redirect(string $url): void {
     header("Location: $url");
     exit;
@@ -37,21 +34,27 @@ function sanitizeHeader(string $value): string {
     return trim(str_replace(["\r", "\n", "\0"], '', $value));
 }
 
+// ---- Langue : la page EN (/en/contact/) envoie un champ caché lang=en ----
+$lang        = (($_POST['lang'] ?? 'fr') === 'en') ? 'en' : 'fr';
+$redirectDir = $lang === 'en' ? '/en/contact/' : '/contact/';
+$REDIRECT_OK  = $redirectDir . '?status=success';
+$REDIRECT_ERR = $redirectDir . '?status=error';
+
 // ---- Méthode ----
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    redirect('/contact/');
+    redirect($redirectDir);
 }
 
 // ---- Honeypot ----
 if (!empty($_POST['website'] ?? '')) {
-    redirect(REDIRECT_OK);
+    redirect($REDIRECT_OK);
 }
 
 // ---- Time-trap : soumission trop rapide (<3s) ou formulaire trop vieux (>1h) = bot ----
 $ts = (int) ($_POST['ts'] ?? 0);              // timestamp JS en millisecondes
 $elapsed = time() - intdiv($ts, 1000);
 if ($ts === 0 || $elapsed < 3 || $elapsed > 3600) {
-    redirect(REDIRECT_OK);                     // on fait croire au bot que c'est passé
+    redirect($REDIRECT_OK);                     // on fait croire au bot que c'est passé
 }
 
 // ---- Validation ----
@@ -60,11 +63,11 @@ $email   = trim((string)($_POST['email']   ?? ''));
 $phone   = trim((string)($_POST['phone']   ?? ''));
 $message = trim((string)($_POST['message'] ?? ''));
 
-if ($name === '' || strlen($name) > 100)                     redirect(REDIRECT_ERR);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL))              redirect(REDIRECT_ERR);
-if (strlen($email) > 200)                                    redirect(REDIRECT_ERR);
-if (strlen($phone) > 50)                                     redirect(REDIRECT_ERR);
-if ($message === '' || strlen($message) > 5000)              redirect(REDIRECT_ERR);
+if ($name === '' || strlen($name) > 100)                     redirect($REDIRECT_ERR);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL))              redirect($REDIRECT_ERR);
+if (strlen($email) > 200)                                    redirect($REDIRECT_ERR);
+if (strlen($phone) > 50)                                     redirect($REDIRECT_ERR);
+if ($message === '' || strlen($message) > 5000)              redirect($REDIRECT_ERR);
 
 $email = sanitizeHeader($email);
 $name  = sanitizeHeader($name);
@@ -78,7 +81,7 @@ $turnstileSecret = (string) getenv('TURNSTILE_SECRET');
 $token           = (string) ($_POST['cf-turnstile-response'] ?? '');
 if ($turnstileSecret === '' || $token === '') {
     error_log('Turnstile: secret ou token manquant');
-    redirect(REDIRECT_ERR);
+    redirect($REDIRECT_ERR);
 }
 $verifyIp   = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
 $verifyResp = @file_get_contents(
@@ -98,7 +101,7 @@ $verifyResp = @file_get_contents(
 $verifyResult = json_decode((string) $verifyResp, true);
 if (empty($verifyResult['success'])) {
     error_log('Turnstile: echec verification');
-    redirect(REDIRECT_ERR);
+    redirect($REDIRECT_ERR);
 }
 
 $host = (string) getenv('SMTP_HOST');
@@ -113,14 +116,14 @@ $recipients = array_values(array_filter([
 
 if ($host === '' || $user === '' || $pass === '' || $from === '' || $recipients === []) {
     error_log('SMTP config manquante');
-    redirect(REDIRECT_ERR);
+    redirect($REDIRECT_ERR);
 }
 
 // ---- SMTP STARTTLS ----
 $fp = @stream_socket_client("tcp://$host:$port", $errno, $errstr, 15);
 if (!$fp) {
     error_log("SMTP connexion échouée: $errstr ($errno)");
-    redirect(REDIRECT_ERR);
+    redirect($REDIRECT_ERR);
 }
 
 stream_set_timeout($fp, 15);
@@ -232,12 +235,12 @@ try {
     $send("QUIT");
     fclose($fp);
 
-    redirect(REDIRECT_OK);
+    redirect($REDIRECT_OK);
 } catch (Throwable $e) {
     error_log('SMTP fail: ' . $e->getMessage());
     if (is_resource($fp)) {
         @fwrite($fp, "QUIT\r\n");
         @fclose($fp);
     }
-    redirect(REDIRECT_ERR);
+    redirect($REDIRECT_ERR);
 }
